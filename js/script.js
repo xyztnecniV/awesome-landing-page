@@ -1,45 +1,78 @@
-// Interaction scripts: menu toggle, smooth scroll, reveal on scroll
+// Advanced interactions: menu toggle, reveal on scroll, lazy loading, form handling
 (function(){
   'use strict';
 
-  const navToggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('main-nav');
-
-  navToggle.addEventListener('click', function(){
-    nav.classList.toggle('open');
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', String(!expanded));
-  });
-
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e){
-      const href = this.getAttribute('href');
-      if(href.length > 1){
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if(target){
-          target.scrollIntoView({behavior:'smooth',block:'start'});
-        }
-      }
+  // Menu toggle for mobile
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-list');
+  if(menuToggle){
+    menuToggle.addEventListener('click', ()=>{
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!expanded));
+      navList.style.display = expanded ? 'none' : 'flex';
     });
-  });
+  }
 
-  // Reveal on scroll
+  // IntersectionObserver for reveal animations
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
-        entry.target.classList.add('visible');
+        entry.target.classList.add('reveal');
         observer.unobserve(entry.target);
       }
     });
-  },{threshold:0.12});
+  },{threshold:0.15});
 
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.feature-card, .plan, .testimonial, .stat, .hero-copy').forEach(el=>observer.observe(el));
 
-  // Ensure elements have reveal class
-  ['.hero-title','.hero-sub','.card','.plan','.section-title'].forEach(selector=>{
-    document.querySelectorAll(selector).forEach(el=>el.classList.add('reveal'));
+  // Lazy load images using loading=lazy where possible, for SVG fallback we handle onload
+  document.querySelectorAll('img').forEach(img=>{
+    if('loading' in HTMLImageElement.prototype){
+      img.setAttribute('loading','lazy');
+    }
   });
+
+  // Simple form handling with validation and microinteraction
+  const form = document.querySelector('.cta-form');
+  if(form){
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const input = form.querySelector('input[name="email"]');
+      const email = input.value.trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        input.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:300});
+        input.style.borderColor = 'rgba(255,100,100,0.9)';
+        setTimeout(()=>input.style.borderColor='transparent',1000);
+        return;
+      }
+      // Microinteraction: show success then reset
+      const submitBtn = form.querySelector('button[type=submit]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wysyłanie...';
+      setTimeout(()=>{
+        submitBtn.textContent = 'Wysłano ✔';
+        submitBtn.style.background = 'linear-gradient(135deg,#06b6d4,#7c3aed)';
+        setTimeout(()=>{
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Wypróbuj za darmo';
+          form.reset();
+        },1600);
+      },900);
+    });
+  }
+
+  // Keyboard accessibility for details summary
+  document.querySelectorAll('details summary').forEach(s=>{
+    s.addEventListener('keydown',(e)=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        s.parentElement.toggleAttribute('open');
+      }
+    });
+  });
+
+  // Dark mode toggle from prefers-color-scheme
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(prefersDark) document.body.classList.add('dark');
 
 })();
