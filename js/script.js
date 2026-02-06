@@ -1,48 +1,45 @@
-// js/script.js - interactivity for landing page
+// Interaction scripts: menu toggle, smooth scroll, reveal on scroll
 (function(){
   'use strict';
 
-  // Mobile menu toggle
-  const navToggle = document.querySelector('.nav-toggle');
-  const primaryNav = document.getElementById('primary-navigation');
+  const navToggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
 
-  if(navToggle && primaryNav){
-    navToggle.addEventListener('click', function(){
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', String(!expanded));
-      primaryNav.classList.toggle('open');
-    });
-  }
-
-  // Smooth scroll for internal links
-  document.addEventListener('click', function(e){
-    const anchor = e.target.closest('a[href^="#"]');
-    if(!anchor) return;
-    const href = anchor.getAttribute('href');
-    if(href === '#') return;
-    const target = document.querySelector(href);
-    if(target){
-      e.preventDefault();
-      target.scrollIntoView({behavior:'smooth',block:'start'});
-      // Close mobile nav when clicking an item
-      if(primaryNav && primaryNav.classList.contains('open')){
-        primaryNav.classList.remove('open');
-        if(navToggle) navToggle.setAttribute('aria-expanded','false');
-      }
-    }
+  navToggle.addEventListener('click', function(){
+    nav.classList.toggle('open');
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!expanded));
   });
 
-  // Simple reveal on scroll (intersection observer)
-  const reveals = document.querySelectorAll('.feature, .hero-inner, .cta-inner');
-  if('IntersectionObserver' in window && reveals.length){
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('reveal');
-          obs.unobserve(entry.target);
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+      const href = this.getAttribute('href');
+      if(href.length > 1){
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if(target){
+          target.scrollIntoView({behavior:'smooth',block:'start'});
         }
-      });
-    },{threshold:0.12});
-    reveals.forEach(r=>obs.observe(r));
-  }
+      }
+    });
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // Ensure elements have reveal class
+  ['.hero-title','.hero-sub','.card','.plan','.section-title'].forEach(selector=>{
+    document.querySelectorAll(selector).forEach(el=>el.classList.add('reveal'));
+  });
+
 })();

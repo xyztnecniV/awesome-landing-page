@@ -1,84 +1,135 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Awesome Landing Page</title>
-  <meta name="description" content="A modern, responsive landing page built with HTML, CSS and JavaScript." />
+  <title>Awesome Landing — Nowoczesny interfejs</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="logo" aria-label="Homepage">
-        <img src="assets/logo.svg" alt="Awesome logo" width="48" height="48" />
-        <span class="brand">Awesome</span>
+      <a class="brand" href="#">
+        <img src="assets/logo.svg" alt="Awesome logo" />
+        <span>Awesome</span>
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="hamburger"></span>
-      </button>
-      <nav id="primary-navigation" class="primary-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a class="cta" href="#signup">Get Started</a></li>
+      <nav class="nav" id="main-nav">
+        <ul>
+          <li><a href="#features">Funkcje</a></li>
+          <li><a href="#pricing">Cennik</a></li>
+          <li><a href="#contact">Kontakt</a></li>
         </ul>
       </nav>
+      <button class="btn btn-ghost nav-toggle" id="nav-toggle" aria-label="Pokaż menu">
+        <span class="hamburger"></span>
+      </button>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="container hero-inner">
-        <h1 class="hero-title">Build beautiful interfaces faster</h1>
-        <p class="hero-sub">A clean, responsive landing page template with a focus on accessibility and performance.</p>
-        <div class="hero-actions">
-          <a href="#signup" class="btn btn-primary">Get Started</a>
-          <a href="#features" class="btn btn-secondary">Learn More</a>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">Zbuduj lepsze doświadczenia cyfrowe</h1>
+          <p class="hero-sub">Szybkie, dostępne i piękne strony lądowania zaprojektowane z myślą o konwersji.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#pricing">Rozpocznij teraz</a>
+            <a class="btn btn-outline" href="#features">Dowiedz się więcej</a>
+          </div>
+          <ul class="trust-list">
+            <li>⭐ 4.9/5 ocen</li>
+            <li>⚡ Szybkie ładowanie</li>
+            <li>🔒 Bezpieczeństwo</li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="assets/hero.svg" alt="Ilustracja produktu" />
         </div>
       </div>
     </section>
 
-    <section class="features" id="features">
+    <section id="features" class="features">
       <div class="container">
-        <h2 class="section-title">Features</h2>
+        <h2 class="section-title">Dlaczego warto?</h2>
+        <p class="section-lead">Elegancki interfejs, szybkie interakcje i gotowe komponenty.</p>
         <div class="features-grid">
-          <article class="feature">
-            <h3>Responsive</h3>
-            <p>Layouts that look great on any screen size.</p>
+          <article class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Wydajność</h3>
+            <p>Optymalizacje pod kątem szybkości i dostępności.</p>
           </article>
-          <article class="feature">
-            <h3>Accessible</h3>
-            <p>Semantic markup and keyboard-friendly navigation.</p>
+          <article class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Design</h3>
+            <p>Nowoczesne wzornictwo z dbałością o detale.</p>
           </article>
-          <article class="feature">
-            <h3>Fast</h3>
-            <p>Minimal CSS and vanilla JavaScript for performance.</p>
+          <article class="card">
+            <div class="card-icon">🔧</div>
+            <h3>Elastyczność</h3>
+            <p>Łatwe dostosowanie i rozbudowa komponentów.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="cta" id="signup">
-      <div class="container cta-inner">
-        <h2>Ready to get started?</h2>
-        <p>Sign up for a free trial and see how quickly you can ship.</p>
-        <form class="signup-form" action="#" onsubmit="return false;">
-          <label for="email" class="sr-only">Email address</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          <button class="btn btn-primary" type="submit">Start free trial</button>
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2 class="section-title">Proste plany</h2>
+        <div class="pricing-grid">
+          <div class="plan">
+            <h3>Starter</h3>
+            <p class="price">Za darmo</p>
+            <ul>
+              <li>Jedna strona</li>
+              <li>Podstawowe wsparcie</li>
+            </ul>
+            <a class="btn btn-secondary" href="#">Wybierz</a>
+          </div>
+          <div class="plan featured">
+            <h3>Pro</h3>
+            <p class="price">49€/mies.</p>
+            <ul>
+              <li>Wiele stron</li>
+              <li>Priorytetowe wsparcie</li>
+            </ul>
+            <a class="btn btn-primary" href="#">Wybierz</a>
+          </div>
+          <div class="plan">
+            <h3>Enterprise</h3>
+            <p class="price">Wyceniane</p>
+            <ul>
+              <li>Rozwiązania dedykowane</li>
+              <li>Wsparcie 24/7</li>
+            </ul>
+            <a class="btn btn-secondary" href="#">Wybierz</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-inner">
+        <div>
+          <h2 class="section-title">Gotowy, by zacząć?</h2>
+          <p class="section-lead">Skontaktuj się z nami, aby omówić projekt.</p>
+        </div>
+        <form class="contact-form" action="#" onsubmit="return false;">
+          <input type="email" name="email" placeholder="Twój e-mail" required />
+          <button class="btn btn-primary">Wyślij</button>
         </form>
       </div>
     </section>
-
-    <footer class="site-footer" id="contact">
-      <div class="container footer-inner">
-        <p>&copy; 2026 Awesome — Built with care.</p>
-      </div>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Awesome. Wszelkie prawa zastrzeżone.</p>
+      <nav>
+        <a href="#">Polityka prywatności</a>
+        <a href="#">Warunki</a>
+      </nav>
+    </div>
+  </footer>
 
   <script src="js/script.js"></script>
 </body>
