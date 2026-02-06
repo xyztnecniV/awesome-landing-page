@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
-  <title>Awesome logo</title>
-  <rect rx="12" width="64" height="64" fill="#0b1220" />
-  <g transform="translate(8,8)">
-    <circle cx="24" cy="24" r="18" fill="#6ee7b7" opacity="0.95" />
-    <path d="M12 24 L24 12 L36 24" stroke="#04201a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-    <circle cx="24" cy="24" r="6" fill="#04201a" />
-  </g>
+<svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="84" height="84" rx="20" fill="url(#g)"/>
+  <circle cx="50" cy="40" r="18" fill="white" opacity="0.9"/>
+  <path d="M35 65c6-6 24-6 30 0" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
 </svg>
