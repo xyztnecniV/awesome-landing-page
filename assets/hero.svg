@@ -1,17 +1,19 @@
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" preserveAspectRatio="xMidYMid meet">
   <defs>
     <linearGradient id="h1" x1="0" x2="1">
-      <stop offset="0" stop-color="#7C3AED" stop-opacity="0.85" />
-      <stop offset="1" stop-color="#06B6D4" stop-opacity="0.85" />
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
-  <rect width="800" height="600" rx="24" fill="#071024" />
-  <g transform="translate(60,60)">
-    <rect x="0" y="0" width="680" height="420" rx="16" fill="url(#h1)" opacity="0.12" />
-    <g transform="translate(40,40)">
-      <rect x="0" y="0" width="280" height="200" rx="8" fill="#0b1220" stroke="rgba(255,255,255,0.04)"/>
-      <rect x="320" y="0" width="280" height="80" rx="8" fill="#0b1220" stroke="rgba(255,255,255,0.04)"/>
-      <rect x="320" y="110" width="280" height="160" rx="8" fill="#0b1220" stroke="rgba(255,255,255,0.04)"/>
+  <rect width="800" height="600" rx="24" fill="#071226"/>
+  <g transform="translate(80,80)">
+    <rect width="500" height="340" rx="18" fill="url(#h1)" opacity="0.14"/>
+    <circle cx="420" cy="40" r="40" fill="#7c3aed" opacity="0.18"/>
+    <g fill="#e6eef6" opacity="0.95">
+      <rect x="20" y="20" width="160" height="20" rx="6"/>
+      <rect x="20" y="60" width="360" height="12" rx="6"/>
+      <rect x="20" y="92" width="420" height="14" rx="6"/>
+      <rect x="20" y="124" width="220" height="14" rx="6"/>
     </g>
   </g>
 </svg>
