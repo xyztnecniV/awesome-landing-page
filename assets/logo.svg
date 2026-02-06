@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>Awesome logo</title>
+  <rect rx="12" width="64" height="64" fill="#0b1220" />
+  <g transform="translate(8,8)">
+    <circle cx="24" cy="24" r="18" fill="#6ee7b7" opacity="0.95" />
+    <path d="M12 24 L24 12 L36 24" stroke="#04201a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="24" cy="24" r="6" fill="#04201a" />
+  </g>
+</svg>
